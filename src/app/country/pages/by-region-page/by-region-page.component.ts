@@ -3,7 +3,7 @@ import { CountryListComponent } from '../../components/country-list/country-list
 
 @Component({
   selector: 'app-by-region-page',
-  imports: [CountryListComponent],
+  //imports: [CountryListComponent],
   templateUrl: './by-region-page.component.html',
 })
 export class ByRegionPageComponent {}
