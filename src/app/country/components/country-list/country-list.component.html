@@ -33,7 +33,36 @@
           >
         </td>
       </tr>
+      }  
+
+      @if (isLoading()) {
+      <tr>
+        <td colspan="8" class="text-center">
+          <span class="spinner-border spinner-border-sm" role="status"></span>
+          <span class="visually-hidden">Buscando paises...</span>
+        </td>
+      } @else {
+
+         @if (errorMessage()) {
+         <tr>
+           <td colspan="8" class="text-danger text-center">
+             {{ errorMessage() }}
+           </td>
+         </tr>
+         }@else {
+
+          @if (countries().length === 0 && !errorMessage()) {
+            <tr>
+              <td colspan="8" class="text-center">
+                No hay paises que mostrar
+              </td>
+            </tr>
+            }
+         }
+        
       }
+      
+
     </tbody>
   </table>
 </section>

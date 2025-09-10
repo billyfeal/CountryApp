@@ -45,5 +45,21 @@ export class CountryService {
       );
   }
 
+
+  searchByAlphaCode(code: string): Observable<Country | undefined> {
+
+    return this.http.get<RESTCountry[]>(`${API_URL}/alpha/${code}`).
+      pipe(
+        map(countries => CountryMapper.mapRestCountryArrayToCountryArray(countries)),
+        map(countries => countries.at(0)),
+        catchError(err => {
+          console.error('CountryService.searchByCountry():');
+          return throwError(
+            () => new Error('Error al buscar países por nombre con query: ' + code)
+          );
+        })
+      );
+  }
+
 }
  
