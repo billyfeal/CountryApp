@@ -7,7 +7,7 @@
         <th>Bandera</th>
         <th>Nombre</th>
         <th>Capital</th>
-        <th>Poblacion</th>
+        <th>Población</th>
         <th></th>
       </tr>
     </thead>
@@ -28,41 +28,35 @@
         </td>
         <td>
           <a
-            [routerLink]="['/country/by/', country.cca2]"
-            class="link-primary cursor-pointer">More info</a
+            [routerLink]="['/country/by', country.cca2]"
+            class="link-primary cursor-pointer"
+            >Más información</a
           >
         </td>
       </tr>
-      }  
 
-      @if (isLoading()) {
+      } @if (errorMessage()) {
       <tr>
         <td colspan="8" class="text-center">
-          <span class="spinner-border spinner-border-sm" role="status"></span>
-          <span class="visually-hidden">Buscando paises...</span>
+          {{ errorMessage() }}
         </td>
-      } @else {
-
-         @if (errorMessage()) {
-         <tr>
-           <td colspan="8" class="text-danger text-center">
-             {{ errorMessage() }}
-           </td>
-         </tr>
-         }@else {
-
-          @if (countries().length === 0 && !errorMessage()) {
-            <tr>
-              <td colspan="8" class="text-center">
-                No hay paises que mostrar
-              </td>
-            </tr>
-            }
-         }
-        
+      </tr>
       }
-      
 
+      <!--  -->
+      @if(countries().length === 0 && !isLoading()) {
+      <tr>
+        <td colspan="8" class="text-center">No se encontraron resultados</td>
+      </tr>
+      }
+
+      <!--  -->
+      @if (isLoading()) {
+      <tr>
+        <td colspan="8" class="text-center">Buscando países</td>
+      </tr>
+
+      }
     </tbody>
   </table>
 </section>

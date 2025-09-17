@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
 import { Location } from '@angular/common';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',
@@ -9,8 +9,7 @@ import { Location } from '@angular/common';
 export class NotFoundComponent {
   location = inject(Location);
 
-  goBack() {  
+  goBack() {
     this.location.back();
   }
-
- }
+}
